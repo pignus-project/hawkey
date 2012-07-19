@@ -3,7 +3,7 @@
 
 Name:		hawkey
 Version:	0.2.6
-Release:	2.git%{gitrev}%{?dist}
+Release:	3.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -69,6 +69,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.6-3.gitea88ad5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Mon Jul 16 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.6-2.gitea88ad5
 - HY_CLEAN_DEPS support.
 
