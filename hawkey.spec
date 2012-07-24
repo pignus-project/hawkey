@@ -1,9 +1,9 @@
-%global gitrev ea88ad5
+%global gitrev 41b39ba
 %global libsolv_version 0.0.0-13
 
 Name:		hawkey
-Version:	0.2.6
-Release:	3.git%{gitrev}%{?dist}
+Version:	0.2.7
+Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -69,6 +69,10 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Tue Jul 24 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.7-1.git41b39ba
+- Package description, license, url support.
+- python: Unicode fixes in Query.
+
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.6-3.gitea88ad5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
