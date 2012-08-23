@@ -1,8 +1,8 @@
-%global gitrev e6734fb
-%global libsolv_version 0.0.0-13
+%global gitrev 8599c55
+%global libsolv_version 0.0.0-17
 
 Name:		hawkey
-Version:	0.2.8
+Version:	0.2.9
 Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -69,6 +69,11 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Thu Aug 23 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.9-1.git8599c55
+- Finding all solutions in Goal.
+- hy_goal_reason() no longer depends on Fedora-specific hacks in libsolv.
+- hy_package_get_sourcerpm()
+
 * Mon Aug 6 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.8-1.gite6734fb
 - repo loading API changed, hy_sack_load_yum_repo() now accepts flags to build
   cache, load filelists, etc.
