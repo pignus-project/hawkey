@@ -1,4 +1,4 @@
-%global gitrev 545a461
+%global gitrev 0245875
 %global libsolv_version 0.0.0-17
 
 Name:		hawkey
@@ -82,6 +82,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 - Flag an error if Sack is created with an invalid arch. (RhBug: 857944)
 - fix hy_get_sourcerpm() when the package has no sourcerpm. (RhBug: 858207)
 - Query: filter by source rpm. (RhBug: 857941)
+- Run 'make check' when building the RPM.
 
 * Mon Sep 10 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.10-2.gita198dea
 - Fix build that now needs python-sphinx.
