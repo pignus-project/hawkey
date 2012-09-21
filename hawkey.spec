@@ -1,9 +1,9 @@
-%global gitrev a198dea
+%global gitrev 545a461
 %global libsolv_version 0.0.0-17
 
 Name:		hawkey
-Version:	0.2.10
-Release:	2.git%{gitrev}%{?dist}
+Version:	0.2.11
+Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -13,7 +13,7 @@ Source0:	hawkey-%{gitrev}.tar.xz
 BuildRequires:	libsolv-devel >= %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
 BuildRequires:	python2-devel
-BuildRequires:  python-sphinx
+BuildRequires:  python-nose python-sphinx
 # explicit dependency: libsolv occasionally goes through ABI changes without
 # bumping the .so number:
 Requires:	libsolv%{?_isa} >= %{libsolv_version}
@@ -51,6 +51,9 @@ Python bindings for the hawkey library.
 make %{?_smp_mflags}
 make doc-man
 
+%check
+make ARGS="-V" test
+
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
 
@@ -72,6 +75,14 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Fri Sep 21 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.11-1.git545a461
+- py: Goal.run_all() returns True if a solution was found. (RhBug: 856615)
+- py: Goal.run() accepts callback parameter too. (RhBug: 856615)
+- query: filtering by version and release. (RhBug: 856612)
+- Flag an error if Sack is created with an invalid arch. (RhBug: 857944)
+- fix hy_get_sourcerpm() when the package has no sourcerpm. (RhBug: 858207)
+- Query: filter by source rpm. (RhBug: 857941)
+
 * Mon Sep 10 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.10-2.gita198dea
 - Fix build that now needs python-sphinx.
 
