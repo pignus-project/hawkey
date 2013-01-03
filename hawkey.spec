@@ -1,9 +1,9 @@
-%global gitrev b3fcf21
+%global gitrev f981c48
 %global libsolv_version 0.2.3
 
 Name:		hawkey
 Version:	0.3.5
-Release:	2.git%{gitrev}%{?dist}
+Release:	3.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -76,7 +76,10 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
-* Fri Dec 21 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.5-2.gitd735540
+* Thu Jan 3 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.5-3.gitf981c48
+- Rebuild with proper git revision.
+
+* Fri Dec 21 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.5-1.gitd735540
 - Move to libsolv-0.2.3 (suit minor API change there)
 
 * Mon Dec 17 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.4-1.gitb3fcf21
