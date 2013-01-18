@@ -1,8 +1,8 @@
-%global gitrev 4e41b7f
-%global libsolv_version 0.0.0-17
+%global gitrev c8365fa
+%global libsolv_version 0.2.3
 
 Name:		hawkey
-Version:	0.3.3
+Version:	0.3.6
 Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -10,14 +10,14 @@ License:	LGPLv2+
 URL:		https://github.com/akozumpl/hawkey
 # git clone https://github.com/akozumpl/hawkey.git && cd hawkey && package/archive
 Source0:	hawkey-%{gitrev}.tar.xz
-BuildRequires:	libsolv-devel >= %{libsolv_version}
+BuildRequires:	libsolv-devel = %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
 BuildRequires:	python2-devel
 BuildRequires:	python-nose
 BuildRequires:	python-sphinx
 # explicit dependency: libsolv occasionally goes through ABI changes without
 # bumping the .so number:
-Requires:	libsolv%{?_isa} >= %{libsolv_version}
+Requires:	libsolv%{?_isa} = %{libsolv_version}
 
 # prevent provides from nonstandard paths:
 %filter_provides_in %{python_sitearch}/.*\.so$
@@ -76,6 +76,28 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Fri Jan 18 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-1.gitc8365fa
+- excludes: Query respects the exclude list. (related RhBug:884617)
+- excludes: apply excludes in Goal. (related RhBug:884617)
+- goal: support forcebest flag. (related RhBug:882211)
+- disabling/enabling entire repositories.
+- selector: preview possibly matched packages with hy_selector_matches(). (related RhBug:882851)
+
+* Thu Jan 3 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.5-3.gitf981c48
+- Rebuild with proper git revision.
+
+* Fri Dec 21 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.5-1.gitd735540
+- Move to libsolv-0.2.3 (suit minor API change there)
+
+* Mon Dec 17 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.4-1.gitb3fcf21
+- Subject: infrastructure for discovering NEVRA explanations of what user's input meant.
+- fix: cloning an evaluated Query should copy the result set too.
+- Reldeps: creating custom-specified reldeps (name, evr).
+- Goal: accept a selector targeting a provide.
+- delete goal_internal.h, not needed.
+- Goal: give the solver SOLVER_FLAG_ALLOW_VENDORCHANGE (RhBug:885646)
+- fix crash when hash for an invalid Reldep is requested.
+
 * Mon Nov 26 2012 Aleš Kozumplík <ales@redhat.com> - 0.3.3-1.git4e41b7f
 - Python: improve Query result caching (uses the C facility now).
 - packageset: add internal function for getting elements with a hint.
@@ -125,7 +147,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 - py: Query: make sure filterm() clears the result cache.
 - py: fix: memory leaks with PySequence_GetItem().
 
-* Mon Sep 22 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.11-4.git687ceab
+* Sat Sep 22 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.11-4.git687ceab
 - py: hawkey.test should not depend on libcheck.so.
 
 * Fri Sep 21 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.2.11-1.git545a461
