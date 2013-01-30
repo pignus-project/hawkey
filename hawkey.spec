@@ -1,9 +1,9 @@
-%global gitrev c8365fa
+%global gitrev a53a6b1
 %global libsolv_version 0.2.3
 
 Name:		hawkey
 Version:	0.3.6
-Release:	1.git%{gitrev}%{?dist}
+Release:	2.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -76,6 +76,12 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Wed Jan 30 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-2.gita53a6b1
+- subject: best shot at 'some-lib-devel' is not that EVR is 'lib-devel'. (Ales Kozumplik)
+- cosmetic: put HY_PKG_LOCATION into the lists alphabetically. (Ales Kozumplik)
+- New key HY_PKG_LOCATION for query (Tomas Mlcoch)
+- querying for upgrades: do not include arbitrary arch changes. (Ales Kozumplik)
+
 * Fri Jan 18 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-1.gitc8365fa
 - excludes: Query respects the exclude list. (related RhBug:884617)
 - excludes: apply excludes in Goal. (related RhBug:884617)
