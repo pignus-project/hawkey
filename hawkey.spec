@@ -1,9 +1,9 @@
-%global gitrev a53a6b1
+%global gitrev dd10ac7
 %global libsolv_version 0.2.3
 
 Name:		hawkey
-Version:	0.3.6
-Release:	2.git%{gitrev}%{?dist}
+Version:	0.3.7
+Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -76,6 +76,17 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Mon Feb 11 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-2.gita53a6b1
+- Selector: allow constraining by version only (without the release). (Ales Kozumplik)
+- python: reldep_repr() outputs a valid number. (Ales Kozumplik)
+- Add pkg.conflicts and pkg.provides. (RhBug:908406) (Ales Kozumplik)
+- hy_query_filter_requires() internally converts to a reldep. (Ales Kozumplik)
+- support filtering by 'obsoletes' and 'conflicts' reldeps. (RhBug:908372) (Ales Kozumplik)
+- allow filtering by requires with reldeps. (RhBug:908372) (Ales Kozumplik)
+- py: Query.filter() returns instance of the same type as the original query. (Ales Kozumplik)
+- sack_knows() does case-insensitive matching too (pricey yet needed). (Ales Kozumplik)
+- subject: best shot at 'some-lib-devel' is not that EVR is 'lib-devel'. (RhBug:903687) (Ales Kozumplik)
+
 * Wed Jan 30 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-2.gita53a6b1
 - subject: best shot at 'some-lib-devel' is not that EVR is 'lib-devel'. (Ales Kozumplik)
 - cosmetic: put HY_PKG_LOCATION into the lists alphabetically. (Ales Kozumplik)
