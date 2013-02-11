@@ -76,7 +76,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
-* Mon Feb 11 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.6-2.gita53a6b1
+* Mon Feb 11 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.7-2.gitdd10ac7
 - Selector: allow constraining by version only (without the release). (Ales Kozumplik)
 - python: reldep_repr() outputs a valid number. (Ales Kozumplik)
 - Add pkg.conflicts and pkg.provides. (RhBug:908406) (Ales Kozumplik)
