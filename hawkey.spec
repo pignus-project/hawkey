@@ -1,9 +1,9 @@
-%global gitrev dd10ac7
+%global gitrev 046ab1c
 %global libsolv_version 0.2.3
 
 Name:		hawkey
-Version:	0.3.7
-Release:	2.git%{gitrev}%{?dist}
+Version:	0.3.8
+Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -76,6 +76,12 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Fri Mar 1 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.8-1.git046ab1c
+- py: expose Subject.pattern (Ales Kozumplik)
+- doc: added the rootdir parameter to hy_sack_create(). (Ales Kozumplik)
+- sack: allow specifying a different rootdir (AKA "installroot") (Ales Kozumplik)
+- Forms recognized by ``Subject`` are no longer an instance-scope setting. (RhBug:903687) (Ales Kozumplik)
+
 * Mon Feb 11 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.7-2.gitdd10ac7
 - Selector: allow constraining by version only (without the release). (Ales Kozumplik)
 - python: reldep_repr() outputs a valid number. (Ales Kozumplik)
