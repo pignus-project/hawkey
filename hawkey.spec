@@ -1,8 +1,8 @@
-%global gitrev 046ab1c
+%global gitrev c0c16c0
 %global libsolv_version 0.2.3
 
 Name:		hawkey
-Version:	0.3.8
+Version:	0.3.9
 Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -76,6 +76,11 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
+* Wed Mar 20 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.9-1.gitc0c16c0
+- refactoring: hy_sack_get_cache_path -> hy_sack_get_cache_dir. (Ales Kozumplik)
+- hy_sack_create() now accepts a flag to disable automatic cachedir creation. (Ales Kozumplik)
+- fix crashes when the logfile can not be initialized. (Ales Kozumplik)
+
 * Fri Mar 1 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.8-1.git046ab1c
 - py: expose Subject.pattern (Ales Kozumplik)
 - doc: added the rootdir parameter to hy_sack_create(). (Ales Kozumplik)
