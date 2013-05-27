@@ -1,9 +1,9 @@
-%global gitrev 2a04c71
+%global gitrev 15db39f
 %global libsolv_version 0.3.0
 
 Name:		hawkey
 Version:	0.3.13
-Release:	1.git%{gitrev}%{?dist}
+Release:	2.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -76,7 +76,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{python_sitearch}/
 
 %changelog
-* Mon May 27 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.13-1.git2a04c71
+* Mon May 27 2013 Aleš Kozumplík <ales@redhat.com> - 0.3.13-2.git15db39f
 - goal: running the same Goal instance twice or more. (Ales Kozumplik)
 - sack._knows can now determine if a particular 'name-version' sounds familiar. (Ales Kozumplik)
 - Goal: do not set the 'keepexplicitobsoletes' flag. (Ales Kozumplik)
