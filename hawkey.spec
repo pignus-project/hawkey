@@ -1,8 +1,8 @@
-%global gitrev 0e5506a
+%global gitrev 6f35513
 %global libsolv_version 0.3.0
 
 Name:		hawkey
-Version:	0.4.0
+Version:	0.4.1
 Release:	1.git%{gitrev}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -12,17 +12,15 @@ URL:		https://github.com/akozumpl/hawkey
 Source0:	hawkey-%{gitrev}.tar.xz
 BuildRequires:	libsolv-devel = %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
-BuildRequires:	python2-devel
-BuildRequires:	python-nose
-BuildRequires:	python-sphinx
 # explicit dependency: libsolv occasionally goes through ABI changes without
 # bumping the .so number:
 Requires:	libsolv%{?_isa} = %{libsolv_version}
-
 # prevent provides from nonstandard paths:
 %filter_provides_in %{python_sitearch}/.*\.so$
+%filter_provides_in %{python3_sitearch}/.*\.so$
 # filter out _hawkey_testmodule.so DT_NEEDED _hawkeymodule.so:
 %filter_requires_in %{python_sitearch}/hawkey/test/.*\.so$
+%filter_requires_in %{python3_sitearch}/hawkey/test/.*\.so$
 %filter_setup
 
 %description
@@ -32,31 +30,60 @@ A Library providing simplified C and Python API to libsolv.
 Summary:	A Library providing simplified C and Python API to libsolv
 Group:		Development/Libraries
 Requires:	hawkey%{?_isa} = %{version}-%{release}
+Requires:	libsolv-devel
 
 %description devel
 Development files for hawkey.
 
 %package -n python-hawkey
-Summary:	Python bindings for the hawkey library
+Summary:	Python 2 bindings for the hawkey library
 Group:		Development/Languages
+BuildRequires:  python2-devel
+BuildRequires:  python-nose
+BuildRequires:  python-sphinx
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n python-hawkey
-Python bindings for the hawkey library.
+Python 2 bindings for the hawkey library.
+
+%package -n python3-hawkey
+Summary:	Python 3 bindings for the hawkey library
+Group:		Development/Languages
+BuildRequires:	python3-devel
+BuildRequires:	python3-nose
+BuildRequires:	python3-sphinx
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+
+%description -n python3-hawkey
+Python 3 bindings for the hawkey library.
 
 %prep
 %setup -q -n hawkey
+
+rm -rf py3
+mkdir ../py3
+cp -a . ../py3/
+mv ../py3 ./
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
 make %{?_smp_mflags}
 make doc-man
 
+pushd py3
+%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPYTHON_DESIRED:str=3.
+make %{?_smp_mflags}
+make doc-man
+popd
+
 %check
 make ARGS="-V" test
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
+pushd py3
+make install DESTDIR=$RPM_BUILD_ROOT
+popd
 
 %post -p /sbin/ldconfig
 
@@ -75,7 +102,18 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %files -n python-hawkey
 %{python_sitearch}/
 
+%files -n python3-hawkey
+%{python3_sitearch}/
+%exclude %{python3_sitearch}/hawkey/__pycache__
+%exclude %{python3_sitearch}/hawkey/test/__pycache__
+
 %changelog
+
+* Mon Sep 16 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.1-1.git6f35513
+- spec file also generates python3-hawkey rpm (Jan Silhan)
+- fixed package object rich comparision (Jan Silhan)
+- Add libsolv-devel as a hard requires for hawkey-devel (Richard Hughes)
+- Python 3 bindings added (Jan Silhan)
 
 * Wed Jul 31 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.0-1.git0e5506a
 - Detect the variant of armv7l. (RhBug:915269) (Ales Kozumplik)
