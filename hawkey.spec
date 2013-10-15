@@ -109,9 +109,9 @@ popd
 
 %changelog
 
-* Mon Oct 15 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.3-1
-- Goal: excluding and then installing results in incomprehenisble problem desc. (RhBug:995459) (Ales Kozumplik)
-- added support of cost option in repos (Jan Silhan)
+* Tue Oct 15 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.3-1
+- methods get_delta_from_evr from package and add_cmdline_package from sack can take unicode string as argument (Jan Sil
+- tests: move TestSack out of the testing module into tests. (Ales Kozumplik)
 
 * Mon Sep 30 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.2-1.git4c51f65
 - Goal: excluding and then installing results in incomprehenisble problem desc. (RhBug:995459) (Ales Kozumplik)
