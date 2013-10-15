@@ -1,9 +1,9 @@
-%global gitrev 4c51f65
+%global gitrev dcfbe87
 %global libsolv_version 0.3.0
 
 Name:		hawkey
-Version:	0.4.2
-Release:	1.git%{gitrev}%{?dist}
+Version:	0.4.3
+Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -108,6 +108,10 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Mon Oct 15 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.3-1
+- Goal: excluding and then installing results in incomprehenisble problem desc. (RhBug:995459) (Ales Kozumplik)
+- added support of cost option in repos (Jan Silhan)
 
 * Mon Sep 30 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.2-1.git4c51f65
 - Goal: excluding and then installing results in incomprehenisble problem desc. (RhBug:995459) (Ales Kozumplik)
