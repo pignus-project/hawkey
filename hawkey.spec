@@ -1,5 +1,5 @@
 %global gitrev 513440a
-%global libsolv_version 0.3.0
+%global libsolv_version 0.4.0
 
 Name:		hawkey
 Version:	0.4.4
@@ -10,11 +10,9 @@ License:	LGPLv2+
 URL:		https://github.com/akozumpl/hawkey
 # git clone https://github.com/akozumpl/hawkey.git && cd hawkey && package/archive
 Source0:	hawkey-%{gitrev}.tar.xz
-BuildRequires:	libsolv-devel = %{libsolv_version}
+BuildRequires:	libsolv-devel >= %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
-# explicit dependency: libsolv occasionally goes through ABI changes without
-# bumping the .so number:
-Requires:	libsolv%{?_isa} = %{libsolv_version}
+Requires:	libsolv%{?_isa} >= %{libsolv_version}
 # prevent provides from nonstandard paths:
 %filter_provides_in %{python_sitearch}/.*\.so$
 %filter_provides_in %{python3_sitearch}/.*\.so$
