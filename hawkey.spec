@@ -1,8 +1,8 @@
-%global gitrev dcfbe87
+%global gitrev 513440a
 %global libsolv_version 0.3.0
 
 Name:		hawkey
-Version:	0.4.3
+Version:	0.4.4
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -108,6 +108,21 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Mon Oct 29 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.4-1
+- With the current libsolv there's no need to reinit solver for re-resolving. (Ales Kozumplik)
+- speedup fetching rpmdb a bit by reusing what we can from the old cache. (Ales Kozumplik)
+- adapt to libsolv 3b3dd72: obsoleting by an installonly package is erasing. (Ales Kozumplik)
+- tests: slim test_goal.c by using a testsys function instead of its reimplementation. (Ales Kozumplik)
+- tests: shave some lines off test_goal.c by using smarter Goal results assertion. (Ales Kozumplik)
+- installonlines: python bindings for installonly_limit. (Ales Kozumplik)
+- goal: when sorting the installonly candidates, consider the running kernel. (Ales Kozumplik)
+- Limit the number of installed installonlies. (RhBug:880524) (Ales Kozumplik)
+- iutil.c: dump_solvables_queue. (Ales Kozumplik)
+- refactor: concentrate all libsolv solver initialization into the static solve(). (Ales Kozumplik)
+- refactor: goal: reinit_solver() (Ales Kozumplik)
+- tests: dump_packagelist() can free the list too. (Ales Kozumplik)
+- iutil: running_kernel(). (Ales Kozumplik)
 
 * Tue Oct 15 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.3-1
 - methods get_delta_from_evr from package and add_cmdline_package from sack can take unicode string as argument (Jan Sil
