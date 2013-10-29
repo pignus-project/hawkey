@@ -109,7 +109,7 @@ popd
 
 %changelog
 
-* Mon Oct 29 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.4-1
+* Tue Oct 29 2013 Aleš Kozumplík <ales@redhat.com> - 0.4.4-1
 - With the current libsolv there's no need to reinit solver for re-resolving. (Ales Kozumplik)
 - speedup fetching rpmdb a bit by reusing what we can from the old cache. (Ales Kozumplik)
 - adapt to libsolv 3b3dd72: obsoleting by an installonly package is erasing. (Ales Kozumplik)
