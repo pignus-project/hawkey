@@ -1,8 +1,8 @@
-%global gitrev 6df2dad
+%global gitrev e9a7b79
 %global libsolv_version 0.4.0-2
 
 Name:		hawkey
-Version:	0.4.6
+Version:	0.4.7
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -107,6 +107,10 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Tue Dec 17 2013  Aleš Kozumplík <ales@redhat.com> - 0.4.7-1
+- Fix malfunction of Package.__lt__ and Package.__gt__ (RhBug:1014963) (Radek Holy)
+- Do not crash when querying provides that do not exist (Richard Hughes)
 
 * Wed Dec 4 2013  Aleš Kozumplík <ales@redhat.com> - 0.4.6-1
 - remove: packageDelta_new (Zdenek Pavlas)
