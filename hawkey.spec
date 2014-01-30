@@ -2,7 +2,7 @@
 %global libsolv_version 0.4.0-2
 
 Name:		hawkey
-Version:	0.4.8
+Version:	0.4.9
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
