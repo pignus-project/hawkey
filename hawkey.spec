@@ -1,8 +1,8 @@
-%global gitrev 8d6af87
+%global gitrev fc24328
 %global libsolv_version 0.4.0-2
 
 Name:		hawkey
-Version:	0.4.10
+Version:	0.4.11
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -89,7 +89,7 @@ popd
 %postun -p /sbin/ldconfig
 
 %files
-%doc COPYING README.md
+%doc COPYING README.rst
 %{_libdir}/libhawkey.so.*
 
 %files devel
@@ -107,6 +107,14 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Mon Feb 24 2014 Aleš Kozumplik <akozumpl@redhat.com> - 0.4.11-1
+- fixed typos in tutorial-py.rst (Jan Silhan)
+- added glob pattern search for arch to nevra_possibilities_real (RhBug:1048788) (Jan Silhan)
+- Left behind references to README.md from 3b47a13. (Ales Kozumplik)
+- Add Radek to AUTHORS. (Ales Kozumplik)
+- update the README. (Ales Kozumplik)
+- sack: write_*() should also check fclose(). (Ales Kozumplik)
 
 * Mon Feb 17 2014 Radek Holý <rholy@redhat.com> - 0.4.10-1
 - tests: add a negative test for reponame. (Radek Holy)
