@@ -108,6 +108,7 @@ popd
 
 %changelog
 
+
 * Fri Mar 14 2014 Jan Silhan <jsilhan@redhat.com> - 0.4.12-1
 - Fix hy_stringarray_length. (Radek Holy)
 - tests: bring tests/repos/yum/recreate to a workable state again. (Ales Kozumplik)
