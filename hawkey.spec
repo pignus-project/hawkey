@@ -1,8 +1,8 @@
-%global gitrev a0fafad
+%global gitrev 52f8596
 %global libsolv_version 0.6.0-0
 
 Name:		hawkey
-Version:	0.4.13
+Version:	0.4.14
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -108,19 +108,30 @@ popd
 
 %changelog
 
+* Fri May 2 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.14-1
+- tests: fix arch unit tests. (Ales Kozumplik)
+- py: cosmetic: drop py_ prefixes from static functions in hawkeymodule.c. (Ales Kozumplik)
+- Expose hy_arch_detect(). (Ales Kozumplik)
+- fixed clang warning of uninitialized variable (Jan Silhan)
+- doc: fixed typo (Jan Silhan)
+- logging: log checksums of written/loaded repositories. (RhBug:1071404) (Ales Kozumplik)
+- logging hawkey version number. (Ales Kozumplik)
+- implement updateinfo caching (Michael Schroeder)
+- cosmetic: fixed sliced changelog lines in spec file (Jan Silhan)
+
 * Fri Apr 11 2014 Jan Silhan <jsilhan@redhat.com> - 0.4.13-1
 - Add forgotten queue_free()s from bd3a2ae. (Ales Kozumplik)
 - cosmetic: some cleanups of 0e4327c. (Ales Kozumplik)
 - refactor rewrite_repos function (Michael Schroeder)
-- rewrite repos after calling addfileprovides (Michael Schroe
-- also set the repodata id if an extension is loaded from the
-- call hy_repo_link when setting the appdata of the system re
-- use REPO_LOCALPOOL when loading the filelist extension (Mic
-- switch over to the written solv files to save memory (Micha
-- py: add downgradable and upgradable kwargs to _hawkey.Query
+- rewrite repos after calling addfileprovides (Michael Schroeder)
+- also set the repodata id if an extension is loaded from the cache (Michael Schroeder)
+- call hy_repo_link when setting the appdata of the system repo (Michael Schroeder)
+- use REPO_LOCALPOOL when loading the filelist extension (Michael Schroeder)
+- switch over to the written solv files to save memory (RhBug:1084174) (Michael Schroeder)
+- py: add downgradable and upgradable kwargs to _hawkey.Query.filter. (Radek Holy)
 - Fix comments in query.c (Radek Holy)
-- Add hy_query_filter_downgradable and hy_query_filter_upgrad
-- tests: py: add tests for _hawkey.AdvisoryRef type. (Radek H
+- Add hy_query_filter_downgradable and hy_query_filter_upgradable. (Radek Holy)
+- tests: py: add tests for _hawkey.AdvisoryRef type. (Radek Holy)
 - tests: py: add tests for hawkey.Advisory type. (Radek Holy)
 - py: add _hawkey.Package.get_advisories method. (Radek Holy)
 - py: add _hawkey.Advisory type. (Radek Holy)
@@ -133,14 +144,14 @@ popd
 - Add advisoryref object. (Radek Holy)
 - Add advisorylist object. (Radek Holy)
 - Add advisory object. (Radek Holy)
-- Rename SOLVABLE_NAME_UPDATE_PREFIX to SOLVABLE_NAME_ADVISOR
-- sack: Also look in /usr/share/rpm for Packages (Colin Walte
-- py: add load_updateinfo kwarg to _hawkey.Sack.load_yum_repo
+- Rename SOLVABLE_NAME_UPDATE_PREFIX to SOLVABLE_NAME_ADVISORY_PREFIX. (Radek Holy)
+- sack: Also look in /usr/share/rpm for Packages (Colin Walters)
+- py: add load_updateinfo kwarg to _hawkey.Sack.load_yum_repo. (Radek Holy)
 - py: add _hawkey.Repo.updateinfo_fn getsetter. (Radek Holy)
-- py: more detailed error string in Sack.add_cmdline_package(
+- py: more detailed error string in Sack.add_cmdline_package(). (Ales Kozumplik)
 - Fix hy_query_run to list only packages. (Radek Holy)
-- Fix goal to add only packages if name glob selector is give
-- Fix hy_goal_run_all_flags to resolve only package installon
+- Fix goal to add only packages if name glob selector is given. (Radek Holy)
+- Fix hy_goal_run_all_flags to resolve only package installonlies. (Radek Holy)
 - Fix sack_knows to check packages only. (Radek Holy)
 - Add is_package function. (Radek Holy)
 - Fix typo in filter_rco_reldep's assertion. (Radek Holy)
