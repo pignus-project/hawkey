@@ -1,4 +1,4 @@
-%global gitrev 52f8596
+%global gitrev 428a977
 %global libsolv_version 0.6.0-0
 
 Name:		hawkey
@@ -109,7 +109,6 @@ popd
 %changelog
 
 * Fri May 2 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.14-1
-- tests: fix arch unit tests. (Ales Kozumplik)
 - py: cosmetic: drop py_ prefixes from static functions in hawkeymodule.c. (Ales Kozumplik)
 - Expose hy_arch_detect(). (Ales Kozumplik)
 - fixed clang warning of uninitialized variable (Jan Silhan)
