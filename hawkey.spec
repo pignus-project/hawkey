@@ -3,7 +3,7 @@
 
 Name:		hawkey
 Version:	0.4.16
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -107,6 +107,9 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.16-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 
 * Tue May 27 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.16-1
 - py3: use sphinx-build-3 (which doesn't encode the minor py version) (RhBug:1098098) (Ales Kozumplik)
