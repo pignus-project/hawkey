@@ -1,9 +1,9 @@
-%global gitrev a56916e
+%global gitrev eafbe0a
 %global libsolv_version 0.6.1-1
 
 Name:		hawkey
-Version:	0.4.16
-Release:	2%{?dist}
+Version:	0.4.17
+Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -107,9 +107,13 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.16-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
+* Thu Jul 3 2014  Aleš Kozumplik <ales@redhat.com> - 0.4.17-1
+- sack: add a public function to get the running kernel package. (Ales Kozumplik)
+- query: fix querying for string provides. (RhBug:1114483) (Ales Kozumplik)
+- fix: commandline RPMs do not provide their files (RhBug:1112810) (Ales Kozumplik)
+- tests: prevent automatic Python deps in tour.rpm. (Ales Kozumplik)
+- deepcopy of sack raises error (RhBug:1059149) (Jan Silhan)
 
 * Tue May 27 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.16-1
 - py3: use sphinx-build-3 (which doesn't encode the minor py version) (RhBug:1098098) (Ales Kozumplik)
