@@ -1,9 +1,9 @@
-%global gitrev 9b92ebd
-%global libsolv_version 0.6.4-0
+%global gitrev d4995bb
+%global libsolv_version 0.6.4-1
 
 Name:		hawkey
-Version:	0.4.18
-Release:	2%{?dist}
+Version:	0.4.19
+Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -108,8 +108,14 @@ popd
 
 %changelog
 
-* Wed Jul 16 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.18-2
-- Revert "api change: drop deprecated hy_package_get_update_*." (Radek Holy)
+* Mon Jul 28 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.19-1
+- packaging: bump the SONAME as there are dropped API calls. (Ales Kozumplik)
+- Support package splitting via obsoletes. (RhBug:1107973) (Ales Kozumplik)
+- api change: py: convert Advisory, AdvisoryRef and AdvisoryPkg attributes to Unicode. (Radek Holy)
+- hy_err_str: it's best to make it static. (Ales Kozumplik)
+- Hide hy_err_str from errno.h (Ales Kozumplik)
+- py: detailed error reporting. (Ales Kozumplik)
+- doc: deprecation policy. (Ales Kozumplik)
 
 * Wed Jul 16 2014 Aleš Kozumplik <ales@redhat.com> - 0.4.18-1
 - api change: py: deprecate _hawkey.Advisory.filenames. (Radek Holy)
