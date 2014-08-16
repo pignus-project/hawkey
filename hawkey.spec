@@ -3,7 +3,7 @@
 
 Name:		hawkey
 Version:	0.5.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -107,6 +107,9 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.5.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 
 * Tue Aug 12 2014 Aleš Kozumplik <ales@redhat.com> - 0.5.0-1
 - sack: include directive support added (Related:RhBug:1055910) (Jan Silhan)
