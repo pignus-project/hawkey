@@ -1,8 +1,8 @@
-%global gitrev c3207af
+%global gitrev 029fd67
 %global libsolv_version 0.6.4-1
 
 Name:		hawkey
-Version:	0.5.1
+Version:	0.5.2
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
@@ -107,6 +107,14 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Tue Nov 25 2014 Jan Silhan <jsilhan@redhat.com> - 0.5.2-1
+- New version: 0.5.2 (Michal Luscon)
+- hy_chksum_str() returns NULL in case of incorrect type (Michal Luscon)
+- Fix defects found by coverity scan (Michal Luscon)
+- selector: allow selecting provides with globs (RhBug: 1148353) (Michal Luscon)
+- py: nevra_init() references possibly uninitialized variable. (Ales Kozumplik)
+- package: add weak deps attributes. (Ales Kozumplik)
 
 * Thu Sep 18 2014 Aleš Kozumplik <ales@redhat.com> - 0.5.1-1
 - pool_split_evr() assert if we hit unexpected data. (Related:RhBug:1141634) (Ales Kozumplik)
