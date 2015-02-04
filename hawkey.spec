@@ -108,7 +108,7 @@ popd
 
 %changelog
 
-* Wed Feb 4 2014 Jan Silhan <jsilhan@redhat.com> - 0.5.3-1
+* Wed Feb 4 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-1
 - README: made readthedoc documentation official (Jan Silhan)
 - sack: deprecation of create_cmdline_repo (Jan Silhan)
 - does not break Sack.__init__ API from 8ce3ce7 (Jan Silhan)
