@@ -1,15 +1,15 @@
-%global gitrev 029fd67
+%global gitrev a687e3f580ae67d4a88b5f5fd0d8da101f031475
 %global libsolv_version 0.6.4-1
 
 Name:		hawkey
-Version:	0.5.2
+Version:	0.5.3
 Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
-URL:		https://github.com/akozumpl/hawkey
-# git clone https://github.com/akozumpl/hawkey.git && cd hawkey && package/archive
-Source0:	hawkey-%{gitrev}.tar.xz
+URL:		https://github.com/rpm-software-management/%{name}
+# git clone https://github.com/rpm-software-management/hawkey.git && cd hawkey && package/archive
+Source0:	https://github.com/rpm-software-management/%{name}/archive/%{gitrev}/%{name}-%{gitrev}.tar.gz
 BuildRequires:	libsolv-devel >= %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
 Requires:	libsolv%{?_isa} >= %{libsolv_version}
@@ -56,7 +56,7 @@ Requires:	%{name}%{?_isa} = %{version}-%{release}
 Python 3 bindings for the hawkey library.
 
 %prep
-%setup -q -n hawkey
+%setup -q -n %{name}-%{gitrev}
 
 rm -rf py3
 mkdir ../py3
@@ -108,7 +108,18 @@ popd
 
 %changelog
 
-* Tue Nov 25 2014 Jan Silhan <jsilhan@redhat.com> - 0.5.2-1
+* Wed Feb 4 2014 Jan Silhan <jsilhan@redhat.com> - 0.5.3-1
+- README: made readthedoc documentation official (Jan Silhan)
+- sack: deprecation of create_cmdline_repo (Jan Silhan)
+- does not break Sack.__init__ API from 8ce3ce7 (Jan Silhan)
+- doc: document the new logdir parameter of Sack.__init__. (Radek Holy)
+- New version: 0.5.3 (Jan Silhan)
+- apichange: sack: added optional param logdir (Related:RhBug:1175434) (Jan Silhan)
+- apichange: py: rename: Sack.cache_path -> Sack.cache_dir (Radek Holy)
+- doc: add Sack to the Python API reference manual. (Radek Holy)
+- cosmetic: autopep8 applied on __init__.py (Jan Silhan)
+- query: support multiple flags in filter (RhBug:1173027) (Jan Silhan)
+- packaging: make the spec file compatible with GitHub packaging guideliness. (Radek Holy)
 - New version: 0.5.2 (Michal Luscon)
 - hy_chksum_str() returns NULL in case of incorrect type (Michal Luscon)
 - Fix defects found by coverity scan (Michal Luscon)
@@ -599,3 +610,4 @@ popd
 
 * Thu Apr 12 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.1-6.git0e6805c%{?dist}
 - Initial package.
+
