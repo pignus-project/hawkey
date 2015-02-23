@@ -3,7 +3,7 @@
 
 Name:		hawkey
 Version:	0.5.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -107,6 +107,9 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+
+* Mon Feb 23 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-2
+- bumped release to be greater than f21 release
 
 * Wed Feb 4 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-1
 - README: made readthedoc documentation official (Jan Silhan)
