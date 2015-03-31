@@ -1,15 +1,14 @@
-%global gitrev a687e3f580ae67d4a88b5f5fd0d8da101f031475
 %global libsolv_version 0.6.4-1
 
 Name:		hawkey
-Version:	0.5.3
-Release:	3%{?dist}
+Version:	0.5.4
+Release:	1%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		https://github.com/rpm-software-management/%{name}
-# git clone https://github.com/rpm-software-management/hawkey.git && cd hawkey && package/archive
-Source0:	https://github.com/rpm-software-management/%{name}/archive/%{gitrev}/%{name}-%{gitrev}.tar.gz
+# git clone https://github.com/rpm-software-management/hawkey.git && cd hawkey && tito build --tgz
+Source0:	https://github.com/rpm-software-management/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:	libsolv-devel >= %{libsolv_version}
 BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
 Requires:	libsolv%{?_isa} >= %{libsolv_version}
@@ -56,7 +55,7 @@ Requires:	%{name}%{?_isa} = %{version}-%{release}
 Python 3 bindings for the hawkey library.
 
 %prep
-%setup -q -n %{name}-%{gitrev}
+%setup -q -n %{name}-%{version}
 
 rm -rf py3
 mkdir ../py3
@@ -107,12 +106,25 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+* Tue Mar 31 2015 Michal Luscon <mluscon@redhat.com> 0.5.4-1
+- setup tito to bump version in VERSION.cmake (Michal Luscon)
+- initialize to use tito (Michal Luscon)
+- prepare repo for tito build system (Michal Luscon)
+- New version 0.5.4 (Michal Luscon)
+- goal: implement methods for optional installation (RhBug:1167881) (Michal Luscon)
+- setup tito to bump version in VERSION.cmake (Michal Luscon)
+- initialize to use tito (Michal Luscon)
+- prepare repo for tito build system (Michal Luscon)
+- New version 0.5.4 (Michal Luscon)
+- goal: implement methods for optional installation (RhBug:1167881) (Michal Luscon)
 
 * Wed Mar 25 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-3
 - new release
 
 * Mon Feb 23 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-2
 - bumped release to be greater than f21 release
+- Add Peter to Authors (Peter Hjalmarsson)
+- Add support for armv6hl (Peter Hjalmarsson)
 
 * Wed Feb 4 2015 Jan Silhan <jsilhan@redhat.com> - 0.5.3-1
 - README: made readthedoc documentation official (Jan Silhan)
@@ -616,4 +628,3 @@ popd
 
 * Thu Apr 12 2012 Aleš Kozumplík <akozumpl@redhat.com> - 0.1-6.git0e6805c%{?dist}
 - Initial package.
-
