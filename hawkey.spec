@@ -2,7 +2,7 @@
 
 Name:		hawkey
 Version:	0.5.7
-Release:	1%{?snapshot}%{?dist}
+Release:	2%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -106,6 +106,9 @@ popd
 %exclude %{python3_sitearch}/hawkey/test/__pycache__
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.5.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Wed May 20 2015 Michal Luscon <mluscon@redhat.com> 0.5.7-1
 - spec: add a %%{snapshot} macro for easier snapshot building (Radek Holy)
 - doc: sack: deep copy added to warning section (Jan Silhan)
