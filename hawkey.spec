@@ -48,7 +48,7 @@ Summary:	Python 2 bindings for the hawkey library
 Group:		Development/Languages
 BuildRequires:  python2-devel
 BuildRequires:  python-nose
-BuildRequires:  python-sphinx >= 1.1.3-9
+BuildRequires:  python-sphinx >= 1.1.3-8
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n python-hawkey
