@@ -3,13 +3,11 @@
 %if 0%{?rhel} != 0 && 0%{?rhel} <= 7
 # Do not build bindings for python3 for RHEL <= 7
 %bcond_with python3
-%else
-%bcond_without python3
 %endif
 
 Name:		hawkey
-Version:	0.5.7
-Release:	2%{?snapshot}%{?dist}
+Version:	0.5.9
+Release:	1%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -48,7 +46,11 @@ Summary:	Python 2 bindings for the hawkey library
 Group:		Development/Languages
 BuildRequires:  python2-devel
 BuildRequires:  python-nose
-BuildRequires:  python-sphinx >= 1.1.3-8
+%if %{with python3}
+BuildRequires:	python-sphinx >= 1.1.3-9
+%else
+BuildRequires:	python-sphinx
+%endif
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n python-hawkey
@@ -93,7 +95,7 @@ popd
 %check
 make ARGS="-V" test
 %if %{with python3}
-./py3/tests/python/tests/run_nosetests.sh
+./py3/tests/python/tests/run_nosetests
 %endif
 
 %install
@@ -129,8 +131,25 @@ popd
 %endif
 
 %changelog
-* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.5.7-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+* Fri Jul 17 2015 Michal Luscon <mluscon@redhat.com> 0.5.9-1
+- don't require python3 in rhel (Jan Silhan)
+- depracate hy_goal_has* functions and Goal.req_has_* methods (Jan Silhan)
+- goal: py: implemented __deepcopy__ (Jan Silhan)
+- goal: implement clone (Jan Silhan)
+- goal: py: added actions attribute (Jan Silhan)
+- goal: added hy_goal_has_action function (Jan Silhan)
+- Add weak deps queries (Michal Luscon)
+- spec: fix the command that starts Python 3 tests (Radek Holy)
+
+* Thu Jun 04 2015 Jan Silhan <jsilhan@redhat.com> 0.5.8-1
+- added implicit-function-declaration compile flag (Jan Silhan)
+- subject: Fix compiler warning introduced by previous commit (Colin Walters)
+- python: Verify that nosetest actually ran any tests (Colin Walters)
+- AUTHORS: updated (Jan Silhan)
+- subject: Remove internal header includes from public header (Colin Walters)
+- maintain result map in query (RhBug:1049205) (Jan Silhan)
+- AUTHORS: updated (Jan Silhan)
+- package: Don't assume the same pool in hy_package_cmp() (Matthew Barnes)
 
 * Wed May 20 2015 Michal Luscon <mluscon@redhat.com> 0.5.7-1
 - spec: add a %%{snapshot} macro for easier snapshot building (Radek Holy)
