@@ -5,9 +5,14 @@
 %bcond_with python3
 %endif
 
+%if 0%{?fedora} != 0
+# Build python3 bindings on all versions of Fedora
+%bcond_without python3
+%endif
+
 Name:		hawkey
 Version:	0.5.9
-Release:	1%{?snapshot}%{?dist}
+Release:	2%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -131,6 +136,9 @@ popd
 %endif
 
 %changelog
+* Mon Jul 20 2015 Stephen Gallagher <sgallagh@redhat.com> 0.5.9-2
+- Build python3 bindings for Fedora
+
 * Fri Jul 17 2015 Michal Luscon <mluscon@redhat.com> 0.5.9-1
 - don't require python3 in rhel (Jan Silhan)
 - depracate hy_goal_has* functions and Goal.req_has_* methods (Jan Silhan)
