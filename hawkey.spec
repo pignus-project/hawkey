@@ -3,16 +3,13 @@
 %if 0%{?rhel} != 0 && 0%{?rhel} <= 7
 # Do not build bindings for python3 for RHEL <= 7
 %bcond_with python3
-%endif
-
-%if 0%{?fedora} != 0
-# Build python3 bindings on all versions of Fedora
+%else
 %bcond_without python3
 %endif
 
 Name:		hawkey
 Version:	0.5.9
-Release:	2%{?snapshot}%{?dist}
+Release:	3%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -136,8 +133,13 @@ popd
 %endif
 
 %changelog
-* Mon Jul 20 2015 Stephen Gallagher <sgallagh@redhat.com> 0.5.9-2
-- Build python3 bindings for Fedora
+* Tue Jul 28 2015 Michal Luscon <mluscon@redhat.com> 0.5.9-3
+- Add explicit values to all public enumerations (Colin Walters)
+- types: Revert unintentional ABI break in _hy_key_name_e (RhBug:1247335)
+  (Colin Walters)
+
+* Tue Jul 21 2015 Jan Silhan <jsilhan@redhat.com> 0.5.9-2
+- spec: builds python3-hawkey in Fedora distro (Jan Silhan)
 
 * Fri Jul 17 2015 Michal Luscon <mluscon@redhat.com> 0.5.9-1
 - don't require python3 in rhel (Jan Silhan)
