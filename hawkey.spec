@@ -8,8 +8,8 @@
 %endif
 
 Name:		hawkey
-Version:	0.5.9
-Release:	3%{?snapshot}%{?dist}
+Version:	0.6.0
+Release:	1%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -133,6 +133,15 @@ popd
 %endif
 
 %changelog
+* Fri Aug 07 2015 Jan Silhan <jsilhan@redhat.com> 0.6.0-1
+- Fixed a tiny typo in the RuntimeException message. (Yavor Atanasov)
+- query: return empty query if we can't make reldep (RhBug:1244544) (Igor
+  Gnatenko)
+- Add support for little endian MIPS (Michal Toman)
+- py: goal.run supports ignore_weak_deps param (Related:RhBug:1221635) (Jan
+  Silhan)
+- goal: added HY_IGNORE_WEAK_DEP flag (Jan Silhan)
+
 * Tue Jul 28 2015 Michal Luscon <mluscon@redhat.com> 0.5.9-3
 - Add explicit values to all public enumerations (Colin Walters)
 - types: Revert unintentional ABI break in _hy_key_name_e (RhBug:1247335)
