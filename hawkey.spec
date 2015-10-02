@@ -9,7 +9,7 @@
 
 Name:		hawkey
 Version:	0.6.1
-Release:	1%{?snapshot}%{?dist}
+Release:	2%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -133,6 +133,9 @@ popd
 %endif
 
 %changelog
+* Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.6.1-2
+- bump release since bodhi does not work
+
 * Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.6.1-1
 - fixed memleaks from 2f5b9af (Jan Silhan)
 - Support list of strings in provides/requires. (RhBug:1243005)(RhBug:1243002)
