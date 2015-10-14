@@ -9,7 +9,7 @@
 
 Name:		hawkey
 Version:	0.6.1
-Release:	2%{?snapshot}%{?dist}
+Release:	3%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -133,6 +133,9 @@ popd
 %endif
 
 %changelog
+* Wed Oct 14 2015 Robert Kuska <rkuska@redhat.com> - 0.6.1-3
+- Rebuilt for Python3.5 rebuild
+
 * Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.6.1-2
 - bump release since bodhi does not work
 
