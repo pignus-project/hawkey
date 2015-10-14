@@ -8,8 +8,8 @@
 %endif
 
 Name:		hawkey
-Version:	0.6.1
-Release:	3%{?snapshot}%{?dist}
+Version:	0.6.2
+Release:	1%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -17,7 +17,7 @@ URL:		https://github.com/rpm-software-management/%{name}
 # git clone https://github.com/rpm-software-management/hawkey.git && cd hawkey && tito build --tgz
 Source0:	https://github.com/rpm-software-management/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:	libsolv-devel >= %{libsolv_version}
-BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
+BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel valgrind
 Requires:	libsolv%{?_isa} >= %{libsolv_version}
 # prevent provides from nonstandard paths:
 %filter_provides_in %{python_sitearch}/.*\.so$
@@ -95,9 +95,20 @@ popd
 %endif
 
 %check
+if [ "$(id -u)" == "0" ] ; then
+        cat <<ERROR 1>&2
+Package tests cannot be run under superuser account.
+Please build the package as non-root user.
+ERROR
+        exit 1
+fi
 make ARGS="-V" test
 %if %{with python3}
-./py3/tests/python/tests/run_nosetests
+# Run just the Python tests, not all of them, since
+# we have coverage of the core from the first build
+pushd py3/tests/python
+make ARGS="-V" test
+popd
 %endif
 
 %install
@@ -133,11 +144,13 @@ popd
 %endif
 
 %changelog
-* Wed Oct 14 2015 Robert Kuska <rkuska@redhat.com> - 0.6.1-3
-- Rebuilt for Python3.5 rebuild
-
-* Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.6.1-2
-- bump release since bodhi does not work
+* Wed Oct 14 2015 Jan Silhan <jsilhan@redhat.com> 0.6.2-1
+- ignore exludes in running_kernel query (RhBug:Related:1260989) (Michal
+  Luscon)
+- spec: Use `make test` for py3 rather than calling test internals (Colin
+  Walters)
+- added valgrind test (Jan Silhan)
+- Fail with comprehensible error message (RhBug:1265234) (Michael Mraka)
 
 * Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.6.1-1
 - fixed memleaks from 2f5b9af (Jan Silhan)
