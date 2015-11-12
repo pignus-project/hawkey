@@ -9,7 +9,7 @@
 
 Name:		hawkey
 Version:	0.6.2
-Release:	1%{?snapshot}%{?dist}
+Release:	2%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -144,6 +144,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 12 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Wed Oct 14 2015 Jan Silhan <jsilhan@redhat.com> 0.6.2-1
 - ignore exludes in running_kernel query (RhBug:Related:1260989) (Michal
   Luscon)
