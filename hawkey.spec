@@ -9,15 +9,19 @@
 
 Name:		hawkey
 Version:	0.6.2
-Release:	2%{?snapshot}%{?dist}
+Release:	3%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		https://github.com/rpm-software-management/%{name}
 # git clone https://github.com/rpm-software-management/hawkey.git && cd hawkey && tito build --tgz
 Source0:	https://github.com/rpm-software-management/%{name}/archive/%{name}-%{version}.tar.gz
+Patch0:		hawkey-0.6.2-valgrind-check.patch
 BuildRequires:	libsolv-devel >= %{libsolv_version}
-BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel valgrind
+BuildRequires:	cmake expat-devel rpm-devel zlib-devel check-devel
+%ifnarch s390
+BuildRequires:	valgrind
+%endif
 Requires:	libsolv%{?_isa} >= %{libsolv_version}
 # prevent provides from nonstandard paths:
 %filter_provides_in %{python_sitearch}/.*\.so$
@@ -73,6 +77,7 @@ Python 3 bindings for the hawkey library.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %if %{with python3}
 rm -rf py3
@@ -144,6 +149,9 @@ popd
 %endif
 
 %changelog
+* Wed Dec 09 2015 Dan Horák <dan[at]danny.cz> - 0.6.2-3
+- fix build without valgrind (#1289865)
+
 * Thu Nov 12 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
