@@ -9,7 +9,7 @@
 
 Name:		hawkey
 Version:	0.6.2
-Release:	3%{?snapshot}%{?dist}
+Release:	4%{?snapshot}%{?dist}
 Summary:	Library providing simplified C and Python API to libsolv
 Group:		System Environment/Libraries
 License:	LGPLv2+
@@ -149,6 +149,9 @@ popd
 %endif
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Wed Dec 09 2015 Dan Horák <dan[at]danny.cz> - 0.6.2-3
 - fix build without valgrind (#1289865)
 
