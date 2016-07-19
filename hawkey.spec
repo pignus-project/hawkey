@@ -8,7 +8,7 @@
 
 Name:           hawkey
 Version:        0.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library providing simplified C and Python API to libsolv
 License:        LGPLv2+
 URL:            https://github.com/rpm-software-management/%{name}
@@ -144,6 +144,9 @@ popd
 %endif
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.3-3
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Fri Apr 29 2016 Igor Gnatenko <ignatenko@redhat.com> 0.6.3-2
 - spec: Fix packaging to comply packaging guidelines (Igor Gnatenko)
 
