@@ -13,6 +13,10 @@ Summary:        Library providing simplified C and Python API to libsolv
 License:        LGPLv2+
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
+
+Patch0001:      0001-sack-don-t-raise-error-when-non-existing-arch-is-use.patch
+Patch0002:      0002-Fixes-for-building-with-libsolv-0.6.21-117.patch
+
 BuildRequires:  libsolv-devel >= %{libsolv_version}
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -70,7 +74,7 @@ Python 3 bindings for the hawkey library.
 %endif
 
 %prep
-%autosetup
+%autosetup -p1
 
 mkdir build
 
