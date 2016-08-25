@@ -8,7 +8,7 @@
 
 Name:           hawkey
 Version:        0.6.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Library providing simplified C and Python API to libsolv
 License:        LGPLv2+
 URL:            https://github.com/rpm-software-management/%{name}
@@ -16,6 +16,7 @@ Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 
 Patch0001:      0001-sack-don-t-raise-error-when-non-existing-arch-is-use.patch
 Patch0002:      0002-Fixes-for-building-with-libsolv-0.6.21-117.patch
+Patch0003:      0001-util-detect-armv7hnl-properly.patch
 
 BuildRequires:  libsolv-devel >= %{libsolv_version}
 BuildRequires:  cmake
@@ -149,6 +150,9 @@ popd
 %endif
 
 %changelog
+* Thu Aug 25 2016 Igor Gnatenko <ignatenko@redhat.com> - 0.6.3-5
+- Fix armv7hnl detection (RHBZ #1368238)
+
 * Tue Aug 09 2016 Igor Gnatenko <ignatenko@redhat.com> - 0.6.3-4
 - Add %%{?system_python_abi}
 - Trim changelog
