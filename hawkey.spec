@@ -26,7 +26,7 @@ BuildRequires:  expat-devel
 BuildRequires:  rpm-devel
 BuildRequires:  zlib-devel
 BuildRequires:  check-devel
-%ifnarch s390
+%ifnarch riscv64 s390
 BuildRequires:  valgrind
 %endif
 Requires:       libsolv%{?_isa} >= %{libsolv_version}
