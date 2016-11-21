@@ -8,7 +8,7 @@
 
 Name:           hawkey
 Version:        0.6.3
-Release:        6%{?dist}
+Release:        6%{?dist}.pi1
 Summary:        Library providing simplified C and Python API to libsolv
 License:        LGPLv2+
 URL:            https://github.com/rpm-software-management/%{name}
@@ -26,7 +26,7 @@ BuildRequires:  expat-devel
 BuildRequires:  rpm-devel
 BuildRequires:  zlib-devel
 BuildRequires:  check-devel
-%ifnarch s390
+%ifnarch s390 armv6hl
 BuildRequires:  valgrind
 %endif
 Requires:       libsolv%{?_isa} >= %{libsolv_version}
@@ -151,6 +151,9 @@ popd
 %endif
 
 %changelog
+* Mon Nov 21 2016 Lubomir Rintel <lkundrak@v3.sk> - 0.6.3-6.pi1
+- Disable valgrind
+
 * Thu Sep 01 2016 Igor Gnatenko <ignatenko@redhat.com> - 0.6.3-6
 - Build release version
 
